@@ -1,0 +1,15 @@
+attached_assets/
+server.py
+main.py
+pyproject.toml
+uv.lock
+.replit
+replit.md
+.agents/
+.local/
+.cache/
+.config/
+.pythonlibs/
+.upm/
+data/
+__pycache__/

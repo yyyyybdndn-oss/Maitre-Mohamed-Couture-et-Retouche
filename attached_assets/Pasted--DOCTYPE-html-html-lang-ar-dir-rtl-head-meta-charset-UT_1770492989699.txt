@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maître Mohamed | Couture et Retouche</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; --black: #0d0d0d; }
+        body { font-family: 'Tajawal', sans-serif; background: var(--black); color: white; margin: 0; }
+        
+        .hero { 
+            padding: 80px 20px; 
+            text-align: center; 
+            border-bottom: 3px solid var(--gold);
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9));
+        }
+
+        /* السمية اللي بغيتي بالظبط */
+        .brand-name { 
+            color: var(--gold); 
+            font-size: 2.8rem; 
+            font-weight: 900;
+            margin: 0; 
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .sub-title { font-size: 1.4rem; opacity: 0.8; margin-top: 10px; }
+
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+            padding: 40px 10%; 
+        }
+
+        .img-card { 
+            border-radius: 15px; 
+            overflow: hidden; 
+            border: 1px solid #333; 
+            height: 380px; 
+            transition: 0.5s; 
+        }
+
+        .img-card:hover { border-color: var(--gold); transform: scale(1.02); }
+        .img-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        .wa-btn { 
+            position: fixed; 
+            bottom: 30px; 
+            left: 30px; 
+            background: #25d366; 
+            color: white; 
+            padding: 15px 30px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5); 
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1 class="brand-name">Maître Mohamed</h1>
+        <div style="color: #fff; font-size: 1.2rem; margin-top: 5px;">Couture et Retouche</div>
+        <p class="sub-title">إتقان الخياطة التقليدية والشناذر في طنجة</p>
+    </div>
+
+    <div class="gallery">
+        <div class="img-card"><img src="https://via.placeholder.com/400x500/1a1a1a/d4af37?text=الشناذر" alt="Work"></div>
+        <div class="img-card"><img src="https://via.placeholder.com/400x500/1a1a1a/d4af37?text=الجلالب" alt="Work"></div>
+        <div class="img-card"><img src="https://via.placeholder.com/400x500/1a1a1a/d4af37?text=الريتوش" alt="Work"></div>
+    </div>
+
+    <a href="https://wa.me/212695495679" class="wa-btn">تواصل مع المعلم محمد 💬</a>
+
+    <footer style="padding: 30px; text-align: center; color: #555; font-size: 0.8rem;">
+        © 2026 Maître Mohamed - Tanger
+    </footer>
+
+</body>
+</html>

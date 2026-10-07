@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maître Mohamed Couture et Retouche</title>
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand"><img src="/images/logo.png" alt="Logo" class="nav-logo">Maître Mohamed</div>
+        <div class="nav-links">
+            <a href="#gallery" data-i18n="nav-gallery">أعمالنا</a>
+            <a href="#services" data-i18n="nav-services">خدماتنا</a>
+            <a href="#contact" data-i18n="nav-contact">تواصل معنا</a>
+        </div>
+        <div class="nav-right">
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="lang-current" onclick="toggleLangMenu()">
+                    <span class="lang-flag" id="currentFlag">🇲🇦</span>
+                    <span class="lang-name" id="currentLang">العربية</span>
+                    <span class="lang-arrow">▾</span>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option" onclick="setLanguage('ar')"><span>🇲🇦</span> العربية</div>
+                    <div class="lang-option" onclick="setLanguage('fr')"><span>🇫🇷</span> Français</div>
+                    <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span> English</div>
+                    <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span> Español</div>
+                    <div class="lang-option" onclick="setLanguage('de')"><span>🇩🇪</span> Deutsch</div>
+                    <div class="lang-option" onclick="setLanguage('it')"><span>🇮🇹</span> Italiano</div>
+                    <div class="lang-option" onclick="setLanguage('tr')"><span>🇹🇷</span> Türkçe</div>
+                    <div class="lang-option" onclick="setLanguage('nl')"><span>🇳🇱</span> Nederlands</div>
+                    <div class="lang-option" onclick="setLanguage('pt')"><span>🇵🇹</span> Português</div>
+                    <div class="lang-option" onclick="setLanguage('ru')"><span>🇷🇺</span> Русский</div>
+                </div>
+            </div>
+                <button class="pos-access-trigger" type="button" onclick="togglePosDashboard()" aria-label="لوحة الحسابات (الكيس / POS)" title="لوحة الحسابات (الكيس / POS)">♙ <span>لوحة الحسابات (الكيس / POS)</span></button>
+            <button class="menu-toggle" onclick="toggleMenu()">&#9776;</button>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-bg-image"></div>
+        <div class="hero-gradient-bg"></div>
+        <canvas id="hero-particles"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="brand-name">Maître Mohamed</h1>
+            <div class="brand-subtitle">Couture et Retouche</div>
+            <p class="sub-title" data-i18n="hero-subtitle">إتقان الخياطة التقليدية والعصرية في طنجة</p>
+            <div class="hero-line"></div>
+            <a href="https://wa.me/212695495679" class="hero-btn" data-i18n="hero-btn">تواصل معنا الآن</a>
+        </div>
+    </div>
+
+    <section id="services" class="services">
+        <h2 class="section-title" data-aos="fade-up" data-i18n="section-services">خدماتنا</h2>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">&#9986;</div>
+                <h3 data-i18n="service-traditional-title">الخياطة التقليدية</h3>
+                <p data-i18n="service-traditional-desc">جلاليب، قفاطين وشناذر مغربية أصيلة بأجود الأقمشة</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">&#9884;</div>
+                <h3 data-i18n="service-modern-title">الملابس العصرية</h3>
+                <p data-i18n="service-modern-desc">بدلات، معاطف وملابس رياضية بتصاميم حديثة</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon">&#10024;</div>
+                <h3 data-i18n="service-alterations-title">الريتوش والتعديل</h3>
+                <p data-i18n="service-alterations-desc">تعديل وإصلاح جميع أنواع الملابس باحترافية عالية</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title" data-aos="fade-up" data-i18n="section-gallery">أعمالنا</h2>
+
+        <div class="filter-tabs" data-aos="fade-up" data-aos-delay="100">
+            <button class="filter-btn active" onclick="filterGallery('all', this)" data-i18n="filter-all">الكل</button>
+            <button class="filter-btn" onclick="filterGallery('coats', this)" data-i18n="filter-coats">المعاطف</button>
+            <button class="filter-btn" onclick="filterGallery('sportswear', this)" data-i18n="filter-sportswear">الملابس الرياضية</button>
+            <button class="filter-btn" onclick="filterGallery('traditional', this)" data-i18n="filter-traditional">الألبسة التقليدية</button>
+        </div>
+
+        <div class="gallery">
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-white.jpeg" alt="معطف أبيض فاخر" loading="lazy"></div>
+                <div class="product-name">معطف أبيض فاخر</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف أبيض فاخر" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-beige.jpeg" alt="معطف بيج كلاسيكي" loading="lazy"></div>
+                <div class="product-name">معطف بيج كلاسيكي</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف بيج كلاسيكي" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-black-white.jpeg" alt="معطف كلاسيكي أسود" loading="lazy"></div>
+                <div class="product-name">معطف كلاسيكي أسود</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف كلاسيكي أسود" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-tweed-beige.jpeg" alt="معطف تويد فاخر" loading="lazy"></div>
+                <div class="product-name">معطف تويد فاخر</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف تويد فاخر" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-red-fur.jpeg" alt="معطف أحمر بفرو" loading="lazy"></div>
+                <div class="product-name">معطف أحمر بفرو</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف أحمر بفرو" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-red-fur-2.jpeg" alt="معطف أحمر بسلسلة ذهبية" loading="lazy"></div>
+                <div class="product-name">معطف أحمر بسلسلة ذهبية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف أحمر بسلسلة ذهبية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-maroon-fur.jpeg" alt="معطف خمري بفرو" loading="lazy"></div>
+                <div class="product-name">معطف خمري بفرو</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف خمري بفرو" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-maroon-belt.jpeg" alt="معطف خمري بحزام" loading="lazy"></div>
+                <div class="product-name">معطف خمري بحزام</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف خمري بحزام" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/suit-teal.jpeg" alt="بدلة نسائية أنيقة" loading="lazy"></div>
+                <div class="product-name">بدلة نسائية أنيقة</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بدلة نسائية أنيقة" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/suit-white-tweed.jpeg" alt="بدلة تويد بيضاء" loading="lazy"></div>
+                <div class="product-name">بدلة تويد بيضاء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بدلة تويد بيضاء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-black-fur-luxury.jpg" alt="معطف أسود فاخر بفرو" loading="lazy"></div>
+                <div class="product-name">معطف أسود فاخر بفرو</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف أسود فاخر بفرو" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-burgundy-buttons.jpg" alt="معطف بورغندي بأزرار" loading="lazy"></div>
+                <div class="product-name">معطف بورغندي بأزرار</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف بورغندي بأزرار" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-beige-crystal.jpg" alt="معطف بيج بكريستال" loading="lazy"></div>
+                <div class="product-name">معطف بيج بكريستال</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف بيج بكريستال" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-maroon-fur-chain.jpg" alt="معطف خمري بسلسلة ذهبية" loading="lazy"></div>
+                <div class="product-name">معطف خمري بسلسلة ذهبية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف خمري بسلسلة ذهبية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-black-lace-collar.jpg" alt="فستان أسود بياقة دانتيل" loading="lazy"></div>
+                <div class="product-name">فستان أسود بياقة دانتيل</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: فستان أسود بياقة دانتيل" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-magenta-buttons.jpg" alt="معطف وردي أنيق" loading="lazy"></div>
+                <div class="product-name">معطف وردي أنيق</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف وردي أنيق" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-black-fur-belt.jpg" alt="معطف أسود بفرو وحزام" loading="lazy"></div>
+                <div class="product-name">معطف أسود بفرو وحزام</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف أسود بفرو وحزام" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="coats" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/coat-burgundy-fur-belt.jpg" alt="معطف بورغندي بفرو وحزام" loading="lazy"></div>
+                <div class="product-name">معطف بورغندي بفرو وحزام</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: معطف بورغندي بفرو وحزام" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-black.jpeg" alt="بذلة رياضية سوداء" loading="lazy"></div>
+                <div class="product-name">بذلة رياضية سوداء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة رياضية سوداء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-blue.jpeg" alt="بذلة رياضية زرقاء" loading="lazy"></div>
+                <div class="product-name">بذلة رياضية زرقاء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة رياضية زرقاء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-grey.jpeg" alt="بذلة رياضية رمادية" loading="lazy"></div>
+                <div class="product-name">بذلة رياضية رمادية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة رياضية رمادية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-green.jpeg" alt="بذلة رياضية خضراء" loading="lazy"></div>
+                <div class="product-name">بذلة رياضية خضراء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة رياضية خضراء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-red.jpeg" alt="بذلة رياضية حمراء" loading="lazy"></div>
+                <div class="product-name">بذلة رياضية حمراء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة رياضية حمراء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-ua-black.jpeg" alt="بذلة أندر آرمر سوداء" loading="lazy"></div>
+                <div class="product-name">بذلة أندر آرمر سوداء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة أندر آرمر سوداء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-ua-grey.jpeg" alt="بذلة أندر آرمر رمادية" loading="lazy"></div>
+                <div class="product-name">بذلة أندر آرمر رمادية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة أندر آرمر رمادية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-ua-blue.jpeg" alt="بذلة أندر آرمر زرقاء" loading="lazy"></div>
+                <div class="product-name">بذلة أندر آرمر زرقاء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة أندر آرمر زرقاء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-olive.jpeg" alt="بذلة رياضية زيتونية" loading="lazy"></div>
+                <div class="product-name">بذلة رياضية زيتونية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة رياضية زيتونية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-adidas-black.jpeg" alt="بذلة أديداس سوداء" loading="lazy"></div>
+                <div class="product-name">بذلة أديداس سوداء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة أديداس سوداء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-nike-black2.jpeg" alt="بذلة نايك سوداء" loading="lazy"></div>
+                <div class="product-name">بذلة نايك سوداء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة نايك سوداء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-nike-grey.jpeg" alt="بذلة نايك رمادية" loading="lazy"></div>
+                <div class="product-name">بذلة نايك رمادية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة نايك رمادية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/jacket-green-black.jpeg" alt="جاكيت رياضي أخضر" loading="lazy"></div>
+                <div class="product-name">جاكيت رياضي أخضر</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: جاكيت رياضي أخضر" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/jacket-grey.jpeg" alt="جاكيت رمادي كلاسيكي" loading="lazy"></div>
+                <div class="product-name">جاكيت رمادي كلاسيكي</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: جاكيت رمادي كلاسيكي" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/jacket-black.jpeg" alt="جاكيت أسود أنيق" loading="lazy"></div>
+                <div class="product-name">جاكيت أسود أنيق</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: جاكيت أسود أنيق" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/hoodie-green.jpeg" alt="هودي أخضر" loading="lazy"></div>
+                <div class="product-name">هودي أخضر</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: هودي أخضر" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/jacket-nike-beige.jpeg" alt="جاكيت نايك بيج" loading="lazy"></div>
+                <div class="product-name">جاكيت نايك بيج</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: جاكيت نايك بيج" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/jacket-adidas-olive.jpeg" alt="جاكيت أديداس زيتوني" loading="lazy"></div>
+                <div class="product-name">جاكيت أديداس زيتوني</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: جاكيت أديداس زيتوني" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-adidas-black-grey.jpg" alt="بذلة أديداس سوداء رمادية" loading="lazy"></div>
+                <div class="product-name">بذلة أديداس سوداء رمادية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة أديداس سوداء رمادية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-ua-olive.jpg" alt="بذلة أندر آرمر زيتونية" loading="lazy"></div>
+                <div class="product-name">بذلة أندر آرمر زيتونية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة أندر آرمر زيتونية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/tracksuit-blue-white.jpg" alt="بذلة رياضية زرقاء وبيضاء" loading="lazy"></div>
+                <div class="product-name">بذلة رياضية زرقاء وبيضاء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: بذلة رياضية زرقاء وبيضاء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="sportswear" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/hoodie-nike-green.jpg" alt="هودي نايك أخضر" loading="lazy"></div>
+                <div class="product-name">هودي نايك أخضر</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: هودي نايك أخضر" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-blue.jpeg" alt="جلابة زرقاء مغربية" loading="lazy"></div>
+                <div class="product-name">جلابة زرقاء مغربية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: جلابة زرقاء مغربية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-pink-maroon.jpeg" alt="قفطان وردي خمري" loading="lazy"></div>
+                <div class="product-name">قفطان وردي خمري</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: قفطان وردي خمري" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-black.jpeg" alt="قفطان أسود فاخر" loading="lazy"></div>
+                <div class="product-name">قفطان أسود فاخر</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: قفطان أسود فاخر" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-lace-black.jpeg" alt="فستان أسود بدانتيل" loading="lazy"></div>
+                <div class="product-name">فستان أسود بدانتيل</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: فستان أسود بدانتيل" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-white-gold.jpeg" alt="فستان أبيض بتطريز ذهبي" loading="lazy"></div>
+                <div class="product-name">فستان أبيض بتطريز ذهبي</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: فستان أبيض بتطريز ذهبي" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-sage.jpeg" alt="فستان أخضر فاتح" loading="lazy"></div>
+                <div class="product-name">فستان أخضر فاتح</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: فستان أخضر فاتح" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/kaftan-white-gold.jpg" alt="قفطان أبيض بتطريز ذهبي" loading="lazy"></div>
+                <div class="product-name">قفطان أبيض بتطريز ذهبي</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: قفطان أبيض بتطريز ذهبي" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-velvet-lace.jpg" alt="فستان مخملي بدانتيل" loading="lazy"></div>
+                <div class="product-name">فستان مخملي بدانتيل</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: فستان مخملي بدانتيل" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/traditional-white-gold-1.jpg" alt="جلابة تقليدية ذهبية" loading="lazy"></div>
+                <div class="product-name">جلابة تقليدية ذهبية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: جلابة تقليدية ذهبية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/traditional-white-gold-2.jpg" alt="جلابة تقليدية بيضاء" loading="lazy"></div>
+                <div class="product-name">جلابة تقليدية بيضاء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: جلابة تقليدية بيضاء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/traditional-white-gold-3.jpg" alt="قفطان مغربي أصيل" loading="lazy"></div>
+                <div class="product-name">قفطان مغربي أصيل</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: قفطان مغربي أصيل" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/traditional-white-gold-4.jpg" alt="فستان تقليدي مطرز" loading="lazy"></div>
+                <div class="product-name">فستان تقليدي مطرز</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: فستان تقليدي مطرز" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/traditional-white-gold-5.jpg" alt="جلابة فاخرة بيضاء" loading="lazy"></div>
+                <div class="product-name">جلابة فاخرة بيضاء</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: جلابة فاخرة بيضاء" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/traditional-white-gold-6.jpg" alt="قفطان بتطريز ذهبي" loading="lazy"></div>
+                <div class="product-name">قفطان بتطريز ذهبي</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: قفطان بتطريز ذهبي" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/traditional-white-gold-7.jpg" alt="جلابة ذهبية ملكية" loading="lazy"></div>
+                <div class="product-name">جلابة ذهبية ملكية</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: جلابة ذهبية ملكية" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/baby-traditional-white.jpg" alt="لباس تقليدي للأطفال" loading="lazy"></div>
+                <div class="product-name">لباس تقليدي للأطفال</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: لباس تقليدي للأطفال" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-pink-silver-1.jpg" alt="فستان وردي بتطريز فضي" loading="lazy"></div>
+                <div class="product-name">فستان وردي بتطريز فضي</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: فستان وردي بتطريز فضي" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-pink-silver-2.jpg" alt="فستان وردي فضي أنيق" loading="lazy"></div>
+                <div class="product-name">فستان وردي فضي أنيق</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: فستان وردي فضي أنيق" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/outfit-olive-set.jpg" alt="طقم زيتوني أنيق" loading="lazy"></div>
+                <div class="product-name">طقم زيتوني أنيق</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: طقم زيتوني أنيق" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-blue-pleated.jpg" alt="فستان أزرق بطيات" loading="lazy"></div>
+                <div class="product-name">فستان أزرق بطيات</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: فستان أزرق بطيات" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+            <div class="img-card" data-category="traditional" data-aos="fade-up">
+                <div class="img-wrap"><img src="/images/dress-gold-floral.jpg" alt="فستان ذهبي بزهور" loading="lazy"></div>
+                <div class="product-name">فستان ذهبي بزهور</div>
+                <a href="https://wa.me/212695495679?text=مرحبا، أريد الاستفسار عن هذا المنتج: فستان ذهبي بزهور" class="wa-order-btn" data-i18n="wa-order">طلب عبر الواتساب</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="map-section">
+        <h2 class="section-title" data-aos="fade-up">موقع ورشتنا في طنجة</h2>
+        <div class="map-wrapper" data-aos="fade-up" data-aos-delay="100">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.4443229712175!2d-5.803565!3d35.764432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b810037a34fad%3A0xc34181a9544bcab3!2sMaitre%20Mohamed%20-%20Couture%20et%20Retouche!5e0!3m2!1sen!2sma!4v1719932400000!5m2!1sen!2sma"
+                width="100%"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="موقع ورشة الخياطة في طنجة - Maître Mohamed">
+            </iframe>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2 class="section-title" data-aos="fade-up" data-i18n="section-contact">تواصل معنا</h2>
+        <div class="contact-info">
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-icon">&#128205;</div>
+                <h3 data-i18n="contact-address-title">العنوان</h3>
+                <p data-i18n="contact-address-val">طنجة، المغرب</p>
+            </div>
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="contact-icon">&#128222;</div>
+                <h3 data-i18n="contact-phone-title">الهاتف</h3>
+                <p dir="ltr">+212 695 495 679</p>
+            </div>
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="contact-icon">&#128172;</div>
+                <h3 data-i18n="contact-wa-title">واتساب</h3>
+                <a href="https://wa.me/212695495679" class="contact-wa-link" data-i18n="contact-wa-link">أرسل رسالة الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/212695495679" class="wa-btn" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-i18n="wa-float-btn">تواصل مع المعلم محمد</span>
+    </a>
+
+    <footer>
+        <p data-i18n="footer-text">© 2026 Maître Mohamed - Tanger</p>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════
+         ORDER MODAL
+    ════════════════════════════════════════════ -->
+    <div class="order-modal-overlay" id="orderModal" onclick="handleOverlayClick(event)">
+        <div class="order-modal" id="orderModalBox">
+
+            <button class="modal-close-btn" onclick="closeOrderModal()" aria-label="إغلاق">&#10005;</button>
+
+            <div class="modal-header">
+                <div class="modal-ornament">✦</div>
+                <h2 class="modal-title">طلب تفصيل خاص</h2>
+                <div class="modal-subtitle">Maître Mohamed — Couture & Retouche</div>
+                <div class="modal-product-badge" id="modalProductName"></div>
+            </div>
+
+            <form id="orderForm" onsubmit="submitOrder(event)" novalidate>
+
+                <div class="form-row">
+                    <label class="form-label" for="clientName">
+                        <span class="label-icon">👤</span> الاسم الكامل <span class="required">*</span>
+                    </label>
+                    <input type="text" id="clientName" class="form-input" placeholder="أدخل اسمك الكامل" required>
+                    <div class="field-error" id="err-name">هذا الحقل مطلوب</div>
+                </div>
+
+                <div class="form-row">
+                    <label class="form-label" for="clientPhone">
+                        <span class="label-icon">📞</span> رقم الهاتف / الواتساب <span class="required">*</span>
+                    </label>
+                    <input type="tel" id="clientPhone" class="form-input" placeholder="+212 6XX XXX XXX" required>
+                    <div class="field-error" id="err-phone">هذا الحقل مطلوب</div>
+                </div>
+
+                <div class="form-row">
+                    <label class="form-label" for="deliveryOption">
+                        <span class="label-icon">🚚</span> نوع التوصيل <span class="required">*</span>
+                    </label>
+                    <select id="deliveryOption" class="form-input form-select" required onchange="toggleAddressField()">
+                        <option value="" disabled selected>— اختر نوع التوصيل —</option>
+                        <option value="الاستلام من الورشة في طنجة">🏪 الاستلام من الورشة في طنجة</option>
+                        <option value="توصيل منزلي في طنجة">🏠 توصيل منزلي في طنجة</option>
+                        <option value="شحن إلى مدينة أخرى">📦 شحن إلى مدينة أخرى</option>
+                    </select>
+                    <div class="field-error" id="err-delivery">هذا الحقل مطلوب</div>
+                </div>
+
+                <div class="form-row" id="addressRow" style="display:none">
+                    <label class="form-label" for="clientAddress">
+                        <span class="label-icon">📍</span> عنوان التوصيل الكامل <span class="required">*</span>
+                    </label>
+                    <input type="text" id="clientAddress" class="form-input" placeholder="الحي، الشارع، رقم المنزل، المدينة...">
+                    <div class="field-error" id="err-address">أدخل العنوان الكامل للتوصيل</div>
+                </div>
+
+                <div class="form-row">
+                    <label class="form-label" for="measurements">
+                        <span class="label-icon">📐</span> المقاسات والتعديلات المطلوبة
+                    </label>
+                    <textarea id="measurements" class="form-input form-textarea" rows="4" placeholder="مثال: الطول 170 سم، المحيط 90 سم، تضييق الأكمام، إضافة بطانة..."></textarea>
+                </div>
+
+                <div class="payment-section">
+                    <div class="form-label payment-heading">
+                        <span class="label-icon">💳</span> التسبيق / الدفع الإلكتروني
+                        <span class="required">*</span>
+                    </div>
+                    <div class="payment-choice-grid">
+                        <label class="payment-choice">
+                            <input type="radio" name="paymentMethod" value="التسبيق عند التواصل" checked>
+                            <span class="payment-choice-mark"></span>
+                            <span>التسبيق عند التواصل</span>
+                        </label>
+                        <label class="payment-choice">
+                            <input type="radio" name="paymentMethod" value="الدفع الإلكتروني">
+                            <span class="payment-choice-mark"></span>
+                            <span>الدفع الإلكتروني</span>
+                        </label>
+                    </div>
+                    <div class="payment-badges" aria-label="طرق الدفع المتاحة">
+                        <div class="payment-badge payment-visa" title="Visa">VISA</div>
+                        <div class="payment-badge payment-mastercard" title="Mastercard"><span class="mc-mark"><i></i><i></i></span><b>mastercard</b></div>
+                        <div class="payment-badge payment-paypal" title="PayPal"><span class="paypal-mark">P</span><b>PayPal</b></div>
+                        <div class="payment-badge payment-apple" title="Apple Pay"><span class="apple-mark">●</span><b>Pay</b></div>
+                        <div class="payment-badge payment-google" title="Google Pay"><span class="google-mark">G</span><b>Pay</b></div>
+                        <div class="payment-badge payment-stripe" title="Stripe">stripe</div>
+                    </div>
+                    <div class="payment-note">سيتم تأكيد طريقة دفع التسبيق معكم عبر الواتساب قبل بدء التفصيل.</div>
+                    <div class="field-error" id="err-payment">اختر طريقة الدفع أو التسبيق</div>
+
+                    <div class="online-payment-fields" id="onlinePaymentPanel" hidden>
+                        <div class="online-payment-heading">
+                            <div>
+                                <strong>بيانات البطاقة</strong>
+                                <span>دفع آمن ومشفّر</span>
+                            </div>
+                            <span class="secure-lock" aria-hidden="true">⌑</span>
+                        </div>
+                        <div class="card-field">
+                            <label class="form-label" for="cardNumber">
+                                <span class="label-icon">▣</span> رقم البطاقة
+                            </label>
+                            <div class="card-input-wrap">
+                                <span class="card-input-icon" aria-hidden="true">▤</span>
+                                <input type="text" id="cardNumber" class="form-input card-input" placeholder="0000 0000 0000 0000" inputmode="numeric" autocomplete="cc-number" maxlength="19" aria-describedby="err-cardNumber">
+                            </div>
+                            <div class="field-error" id="err-cardNumber">أدخل رقم بطاقة صحيحاً</div>
+                        </div>
+                        <div class="card-field-grid">
+                            <div class="card-field">
+                                <label class="form-label" for="cardExpiry">
+                                    <span class="label-icon">◷</span> تاريخ الانتهاء
+                                </label>
+                                <input type="text" id="cardExpiry" class="form-input card-input" placeholder="MM/YY" inputmode="numeric" autocomplete="cc-exp" maxlength="5" aria-describedby="err-cardExpiry">
+                                <div class="field-error" id="err-cardExpiry">أدخل التاريخ بصيغة MM/YY</div>
+                            </div>
+                            <div class="card-field">
+                                <label class="form-label" for="cardCvv">
+                                    <span class="label-icon">⌁</span> رمز الأمان
+                                    <button type="button" class="security-tooltip" title="رمز CVV هو آخر 3 أو 4 أرقام خلف البطاقة" aria-label="ما هو رمز الأمان؟">?</button>
+                                </label>
+                                <input type="password" id="cardCvv" class="form-input card-input" placeholder="CVV" inputmode="numeric" autocomplete="cc-csc" maxlength="4" aria-describedby="err-cardCvv">
+                                <div class="field-error" id="err-cardCvv">أدخل رمز الأمان</div>
+                            </div>
+                        </div>
+                        <div class="card-safety-note"><span>✦</span> لن يتم إرسال بيانات البطاقة عبر الواتساب أو حفظها في الطلب.</div>
+                    </div>
+
+                    <div class="order-summary-box" id="orderSummaryBox">
+                        <div class="summary-heading">
+                            <span>الملخص</span>
+                            <span>ORDER SUMMARY</span>
+                        </div>
+                        <div class="summary-product-row">
+                            <span class="summary-product-icon">✦</span>
+                            <strong id="summaryProductName">طلب تفصيل خاص</strong>
+                        </div>
+                        <div class="summary-details" id="summaryDetails">اختر المقاسات والتوصيل لإظهار التفاصيل</div>
+                        <div class="summary-total-row">
+                            <span>الإجمالي</span>
+                            <strong id="summaryTotal">غير محدد <small>د.م</small></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="amount-grid">
+                    <div class="form-row">
+                        <label class="form-label" for="estimatedTotal"><span class="label-icon">💰</span> السعر الإجمالي المتوقع (درهم)</label>
+                        <input type="number" id="estimatedTotal" class="form-input" min="0" step="0.01" inputmode="decimal" placeholder="اختياري">
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="depositAmount"><span class="label-icon">🪙</span> مبلغ التسبيق (درهم)</label>
+                        <input type="number" id="depositAmount" class="form-input" min="0" step="0.01" inputmode="decimal" placeholder="اختياري">
+                    </div>
+                </div>
+
+                <div class="form-row checkbox-row">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="advanceAgreement" class="form-checkbox" required>
+                        <span class="checkbox-custom"></span>
+                        <span class="checkbox-text">
+                            أوافق على دفع تسبيق <strong>(Avance)</strong> لبدء تفصيل البياسة، وسداد الباقي عند الاستلام
+                        </span>
+                    </label>
+                    <div class="field-error" id="err-checkbox">يجب الموافقة على شرط التسبيق لإتمام الطلب</div>
+                </div>
+
+                <button type="submit" class="modal-submit-btn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    <span id="modalSubmitLabel">تأكيد الطلب وإرسال عبر الواتساب</span>
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         PRIVATE POS DASHBOARD
+    ════════════════════════════════════════════ -->
+    <div class="pos-modal-overlay" id="posDashboard" onclick="handlePosOverlayClick(event)" aria-hidden="true">
+        <section class="pos-dashboard" role="dialog" aria-modal="true" aria-labelledby="posTitle">
+            <button class="modal-close-btn pos-close-btn" type="button" onclick="closePosDashboard()" aria-label="إغلاق لوحة الحسابات">&#10005;</button>
+            <div class="pos-header">
+                <div class="pos-kicker">MAÎTRE MOHAMED · BACK OFFICE</div>
+                <h2 id="posTitle">لوحة الحسابات <span>(الكيس / POS)</span></h2>
+                <p>متابعة الطلبات والتسبيقات من نفس الموقع</p>
+            </div>
+            <div class="pos-stats" id="posStats">
+                <div class="pos-stat"><span>إيراد اليوم</span><strong id="posTodayRevenue">0 د.م</strong></div>
+                <div class="pos-stat"><span>إيراد هذا الأسبوع</span><strong id="posWeekRevenue">0 د.م</strong></div>
+                <div class="pos-stat"><span>التسبيقات المعلقة</span><strong id="posPendingDeposits">0 د.م</strong></div>
+                <div class="pos-stat"><span>عدد الطلبات</span><strong id="posOrderCount">0</strong></div>
+            </div>
+            <div class="pos-toolbar">
+                <div>
+                    <h3>الطلبات الأخيرة</h3>
+                    <span id="posLastUpdated">—</span>
+                </div>
+                <button class="pos-refresh-btn" type="button" onclick="loadPosOrders()">↻ تحديث البيانات</button>
+            </div>
+            <div class="pos-feedback" id="posFeedback" role="status"></div>
+            <div class="pos-table-wrap">
+                <table class="pos-table">
+                    <thead>
+                        <tr>
+                            <th>العميل / المنتج</th>
+                            <th>التفاصيل</th>
+                            <th>الدفع</th>
+                            <th>المبالغ</th>
+                            <th>الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="posOrdersBody">
+                        <tr><td colspan="5" class="pos-empty">لا توجد طلبات بعد</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>
